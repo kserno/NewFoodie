@@ -9,6 +9,7 @@ import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.android.food.FoodCategoriesAdapter
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.food.FoodFragmentDirections
 import app.kserno.foodie.common.VerticalSpaceItemDecoration
 import app.kserno.foodie.common.api.ParseApi
 import app.kserno.foodie.common.model.FoodCategory
@@ -54,10 +55,16 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
             }
         })
 
-
         viewModel.actionOrder.observe(this, Observer {
-
+            if (!it.hasBeenHandled) {
+                it.getContentIfNotHandled()
+                val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToNewOrderFragment()
+                findNavController().navigate(dirs)
+            }
         })
+        orderLayout.setOnClickListener {
+            viewModel.orderClicked()
+        }
 
         recyclerView.addItemDecoration(VerticalSpaceItemDecoration(32))
         recyclerView.layoutManager = LinearLayoutManager(context)

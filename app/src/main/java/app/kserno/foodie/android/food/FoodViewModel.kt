@@ -17,7 +17,6 @@ class FoodViewModel(
         private val categoryId: String = ""
 ): ViewModel() {
 
-
     val data = MutableLiveData<List<Food>>()
     val order = MutableLiveData<List<FoodOrderModel>>()
     val actionOrder = MutableLiveData<Action<Void>>()

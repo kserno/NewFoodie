@@ -22,10 +22,10 @@ class ViewModelStore(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(OrderViewModel::class.java) -> OrderViewModel(api)
+            /*modelClass.isAssignableFrom(OrderViewModel::class.java) -> OrderViewModel(api)
             modelClass.isAssignableFrom(PayingViewModel::class.java) -> PayingViewModel(api)
             modelClass.isAssignableFrom(NewOrderViewModel::class.java) -> NewOrderViewModel(api)
-            modelClass.isAssignableFrom(CategoriesViewModel::class.java) -> CategoriesViewModel(api)
+            modelClass.isAssignableFrom(CategoriesViewModel::class.java) -> CategoriesViewModel(api)*/
             else -> throw IllegalArgumentException()
         } as T
     }

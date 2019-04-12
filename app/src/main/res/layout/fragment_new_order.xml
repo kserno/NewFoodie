@@ -61,7 +61,8 @@
             android:background="#000000"
             android:textColor="#ffffff"
             android:text="Place order"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:onClick="@{() -> viewModel.placeOrderClicked()}"/>
 
     </RelativeLayout>
 

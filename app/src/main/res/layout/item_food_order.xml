@@ -4,8 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
+            name="food"
+            type="app.kserno.foodie.common.model.Food" />
+        <variable
             name="foodOrder"
-            type="app.kserno.foodie.common.model.FoodOrder" />
+            type="app.kserno.foodie.common.model.FoodOrderModel" />
 
 
     </data>
@@ -19,12 +22,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{foodOrder.food.photoUrl}"/>
+                app:imageUrl="@{food.photoUrl}"/>
 
 
             <TextView
@@ -46,22 +49,13 @@
                 tools:text="1,20 e"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@{String.valueOf(foodOrder.food.price)}"
+                android:text="@{String.valueOf(food.price)}"
                 android:textSize="14sp"
                 android:layout_marginBottom="8dp"
 
                 />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="32sp"
-                android:textColor="#ffffff"
-                android:text="Order"
-                android:textSize="12sp"
-                android:background="#000000"/>
 
-
--->
         </LinearLayout>
 
 

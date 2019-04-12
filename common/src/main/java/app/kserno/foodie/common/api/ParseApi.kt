@@ -26,10 +26,13 @@ import java.io.File
  *  Created by filipsollar on 2019-04-10
  */
 class ParseApi(context: Context): Api {
+
+
     override fun cancelOrder() {
         currentOrder.clear()
         newOrderSubject.onNext(currentOrder)
     }
+
 
     override fun addFoodToOrder(food: Food) {
         var added = false
@@ -48,6 +51,10 @@ class ParseApi(context: Context): Api {
     private val currentOrder: MutableList<FoodOrderModel> = mutableListOf()
 
     private val newOrderSubject = BehaviorSubject.create<List<FoodOrderModel>>()
+
+    init {
+        newOrderSubject.onNext(currentOrder)
+    }
 
     override val newOrder: Observable<List<FoodOrderModel>>
         get() = newOrderSubject
