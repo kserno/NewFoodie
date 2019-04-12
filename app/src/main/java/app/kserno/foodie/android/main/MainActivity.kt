@@ -53,17 +53,6 @@ class MainActivity: AppCompatActivity() {
 
         val navController = findNavController(R.id.navHostFragment)
 
-        socket = WsService(Moshi.Builder().build())
-        socket.getObservable()
-                .applySchedulers()
-                .subscribe({
-                    print(it)
-                }, {
-                    it.printStackTrace()
-                })
-        socket.order(
-                asList(FoodOrder("testid", FoodWs("Jogurt", 50.0, "gf")))
-        )
 
         component = DaggerMainComponent.builder()
                 .mainModule(MainModule(this))

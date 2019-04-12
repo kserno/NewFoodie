@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.common.WsService
@@ -30,10 +32,21 @@ class OrderFragment: BaseFragment() {
 
         mainActivity?.component?.inject(this)
 
+        val adapter = OrderAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(context!!, 2)
         viewModel = OrderViewModel(api, wsService)
+
+        viewModel.data.observe(this, Observer {
+            adapter.items = it.orders
+        })
 
         btOrder.setOnClickListener {
             val dirs = OrderFragmentDirections.actionOrderFragmentToCategoriesFragment()
+            findNavController().navigate(dirs)
+        }
+        btCallWaiter.setOnClickListener {
+            val dirs = OrderFragmentDirections.actionOrderFragmentToPayingFragment()
             findNavController().navigate(dirs)
         }
     }

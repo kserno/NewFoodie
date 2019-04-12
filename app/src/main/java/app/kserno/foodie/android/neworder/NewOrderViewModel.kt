@@ -38,7 +38,7 @@ class NewOrderViewModel(
         val result = ArrayList<FoodOrder>()
 
         list.forEach {
-            for (i in 0..it.count-1) {
+            for (i in 0 until it.count) {
                 result.add(FoodOrder(
                         UUID.randomUUID().toString(),
                         FoodWs(
