@@ -1,0 +1,51 @@
+package app.kserno.foodie.android.food
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import app.kserno.foodie.common.Adapter
+import app.kserno.foodie.android.R
+import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
+import app.kserno.foodie.common.api.ParseApi
+import app.kserno.foodie.common.model.Food
+import kotlinx.android.synthetic.main.fragment_food.*
+
+/**
+ *  Created by filipsollar on 2019-03-27
+ */
+class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
+
+
+    lateinit var viewModel: FoodViewModel
+    lateinit var adapter: FoodAdapter
+
+    override val layoutId: Int = R.layout.fragment_food
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter = FoodAdapter()
+        viewModel = FoodViewModel(ParseApi(context!!))
+
+
+        adapter.listener = this
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
+
+        viewModel.data.observe(this, Observer {
+            adapter.items = it
+        })
+
+    }
+    override fun onItemSelected(item: Food) {
+        findNavController().navigate(R.id.action_foodFragment_to_foodDetailFragment,
+                Bundle().apply { putParcelable("coffee", item) }
+        )
+    }
+}

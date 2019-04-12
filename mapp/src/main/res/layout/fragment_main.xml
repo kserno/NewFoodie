@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kserno.foodie.main.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:contentInsetStart="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Manager"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="@{viewModel.welcomeMessage}"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btTables"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:onClick="@{() -> viewModel.tablesClicked()}"
+                android:text="Tables"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toTopOf="@+id/btFoods"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btFoods"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:onClick="@{() -> viewModel.foodsClicked()}"
+                android:text="Foods"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toTopOf="@+id/btAccounts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btTables" />
+
+            <Button
+                android:id="@+id/btAccounts"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:onClick="@{() -> viewModel.accountsClicked()}"
+                android:text="Accounts"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toTopOf="@+id/btOrders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btFoods" />
+
+            <Button
+                android:id="@+id/btOrders"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:onClick="@{() -> viewModel.ordersClicked()}"
+                android:text="Orders"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btAccounts" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+
+</layout>

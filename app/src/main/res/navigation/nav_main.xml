@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_main"
+    app:startDestination="@id/orderFragment">
+
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="app.kserno.foodie.android.order.OrderFragment"
+        android:label="OrderFragment" >
+        <action
+            android:id="@+id/action_orderFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_payingFragment"
+            app:destination="@id/payingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="app.kserno.foodie.android.categories.CategoriesFragment"
+        android:label="CategoriesFragment" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_foodFragment"
+            app:destination="@id/foodFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_newOrderFragment"
+            app:destination="@id/newOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="app.kserno.foodie.android.food.FoodFragment"
+        android:label="FoodFragment" >
+        <action
+            android:id="@+id/action_foodFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_foodFragment_to_newOrderFragment"
+            app:destination="@id/newOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="app.kserno.foodie.android.detail.FoodDetailFragment"
+        android:label="FoodDetailFragment" />
+    <fragment
+        android:id="@+id/newOrderFragment"
+        android:name="app.kserno.foodie.android.neworder.NewOrderFragment"
+        android:label="NewOrderFragment" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="app.kserno.foodie.android.pay.PaymentFragment"
+        android:label="PaymentFragment" />
+    <fragment
+        android:id="@+id/payingFragment"
+        android:name="app.kserno.foodie.android.paying.PayingFragment"
+        android:label="PayingFragment" >
+        <action
+            android:id="@+id/action_payingFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+</navigation>
