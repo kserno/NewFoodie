@@ -2,6 +2,7 @@ package app.kserno.foodie.android.neworder
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -46,8 +47,11 @@ class NewOrderFragment: BaseFragment() {
         viewModel.actionDone.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                InfoDialog.create("Bon Appetit!", "Your order will be delivered shortly. :-)")
-                        .show(childFragmentManager, "tag")
+                Toast.makeText(context, "Bon Appetit! Your order will be delivered shortly. :-)", Toast.LENGTH_SHORT).show()
+                val dirs = NewOrderFragmentDirections.actionNewOrderFragmentToOrderFragment()
+                findNavController().navigate(dirs)
+//                InfoDialog.create("Bon Appetit!", "Your order will be delivered shortly. :-)")
+//                        .show(childFragmentManager, "tag")
                 //findNavController().navigateUp()
 
             }
