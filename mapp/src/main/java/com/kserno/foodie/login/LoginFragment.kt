@@ -31,8 +31,6 @@ class LoginFragment: BaseFragment() {
 
     @Inject lateinit var api: Api
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

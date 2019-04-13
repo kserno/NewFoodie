@@ -75,7 +75,7 @@ class ParseApi(context: Context): Api {
                 food.put("price", price)
                 food.put("photoUrl", file.url)
                 food.put("restaurantId", getCurrentUser()!!.restaurantId)
-                food.put("categoryId", "") // TODO
+                food.put("categoryId", "")
                 food.saveInBackground { ex ->
                     if (ex != null) {
                         it.onError(ex)
@@ -95,7 +95,8 @@ class ParseApi(context: Context): Api {
             user.username = username
             user.setPassword(password)
             user.put("name", name)
-            user.signUpInBackground { e ->
+            user.put("restaurantId", getCurrentUser()!!.restaurantId)
+            user.signUpInBackground{ e ->
                 if (e != null) {
                     it.onError(e)
                     return@signUpInBackground
