@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentNewOrderBinding
@@ -53,5 +54,9 @@ class NewOrderFragment: BaseFragment() {
         })
 
         binding.viewModel = viewModel
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }

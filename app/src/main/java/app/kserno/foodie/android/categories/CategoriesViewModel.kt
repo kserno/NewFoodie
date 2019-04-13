@@ -38,16 +38,11 @@ class CategoriesViewModel(
                 }, {
                     it.printStackTrace()
                 })
-
-
     }
 
     fun orderClicked() {
         actionOrder.postValue(Action())
     }
-
-
-
 
 
 

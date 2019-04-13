@@ -54,6 +54,9 @@ class PayingFragment: BaseFragment() {
 
         binding.viewModel = viewModel
 
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 

@@ -73,6 +73,10 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
                 findNavController().navigate(dirs)
             }
         })
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         orderLayout.setOnClickListener {
             viewModel.orderClicked()
         }
