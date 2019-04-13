@@ -33,6 +33,8 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
     lateinit var adapter: FoodCategoriesAdapter
     @Inject lateinit var parseApi: ParseApi
 
+    //lateinit var binding: FragmentCa
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

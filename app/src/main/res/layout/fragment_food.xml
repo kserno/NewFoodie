@@ -1,58 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="app.kserno.foodie.android.food.FoodViewModel" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    </data>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:contentInsetStart="0dp">
+        android:layout_height="match_parent">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:contentInsetStart="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="Papa John's Pizzeria"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="22sp"
-            android:text="Papa John's Pizzeria"/>
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/orderLayout"/>
+
+        <LinearLayout
+            android:id="@+id/orderLayout"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="SEE ORDER"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_weight=".7"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@{viewModel.textPrice}"
+
+                android:gravity="center"
+                android:layout_weight=".3"
+                font="fonts/Montserrat-Italic.ttf"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
-    </androidx.appcompat.widget.Toolbar>
+</layout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/orderLayout"/>
-
-    <LinearLayout
-        android:id="@+id/orderLayout"
-        android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="See Order"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:layout_weight=".7"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="See Order"
-            android:gravity="center"
-            android:layout_weight=".3"/>
-
-    </LinearLayout>
-
-</RelativeLayout>

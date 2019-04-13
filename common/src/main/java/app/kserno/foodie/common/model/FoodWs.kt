@@ -10,4 +10,9 @@ data class FoodWs(
         val name: String,
         val price: Double,
         val photoUrl: String
-): Parcelable
+): Parcelable {
+
+    val prettyPrice: String
+        get() = "$price €"
+
+}

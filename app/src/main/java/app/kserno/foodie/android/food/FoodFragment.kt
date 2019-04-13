@@ -30,6 +30,8 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
 
     override val layoutId: Int = R.layout.fragment_food
 
+    lateinit var binding: FragmentFOod
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
