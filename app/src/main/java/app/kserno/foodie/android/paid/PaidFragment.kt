@@ -3,6 +3,7 @@ package app.kserno.foodie.android.paid
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
@@ -34,5 +35,9 @@ class PaidFragment: BaseFragment() {
         viewModel.data.observe(this, Observer {
             adapter.items = it
         })
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }

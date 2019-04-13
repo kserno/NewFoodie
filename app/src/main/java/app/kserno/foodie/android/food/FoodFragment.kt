@@ -75,6 +75,9 @@ class FoodFragment: BaseFragment(), FoodAdapter.Listener {
         orderLayout.setOnClickListener {
             viewModel.orderClicked()
         }
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
     override fun onItemSelected(item: Food) {

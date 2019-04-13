@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
 import app.kserno.foodie.common.dialog.InfoDialog
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.model.Food
+import kotlinx.android.synthetic.main.fragment_food_detail.*
 import javax.inject.Inject
 
 /**
@@ -41,6 +43,10 @@ class FoodDetailFragment: BaseFragment() {
                 InfoDialog.create("Success", "Meal has been added to order").show(fragmentManager!!, "1")
             }
         })
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 }

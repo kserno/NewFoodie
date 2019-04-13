@@ -1,15 +1,19 @@
 package app.kserno.foodie.android.pay
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentPaymentBinding
 import app.kserno.foodie.common.dialog.InfoDialog
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.model.FoodOrder
+import kotlinx.android.synthetic.main.fragment_payment.*
 import javax.inject.Inject
 
 /**
@@ -40,11 +44,17 @@ class PaymentFragment: BaseFragment() {
         viewModel.actionDone.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                InfoDialog.create("Thank you!", "Thanks from Food.io team for paying your order <3")
-                        .show(childFragmentManager, "t")
-                //findNavController().navigate(R.id.orderFragment)
-
+                Toast.makeText(context, "Thank you! Selected items have been paid.", Toast.LENGTH_SHORT).show()
+                val dirs = PaymentFragmentDirections.actionPaymentFragmentToOrderFragment()
+                findNavController().navigate(dirs)
+//                InfoDialog.create("Thank you!", "Thanks from Food.io team for paying your order <3")
+//                        .show(childFragmentManager, "tag")
+//                findNavController().navigate()
             }
         })
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 }
