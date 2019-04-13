@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.R
 import com.kserno.foodie.databinding.FragmentAccountsBinding
@@ -35,6 +36,14 @@ class AccountsFragment: Fragment() {
 
         viewModel.users.observe(this, Observer {
             adapter.items = it
+        })
+
+        viewModel.actionNew.observe(this, Observer {
+            if (!it.hasBeenHandled) {
+                it.getContentIfNotHandled()
+                val dirs = AccountsFragmentDirections.actionAccountsFragmentToAddAccountFragment()
+                findNavController().navigate(dirs)
+            }
         })
     }
 }

@@ -9,7 +9,11 @@
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -17,25 +21,49 @@
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_accountsFragment"
-            app:destination="@id/accountsFragment" />
+            app:destination="@id/accountsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
         <action
             android:id="@+id/action_mainFragment_to_tablesFragment"
-            app:destination="@id/tablesFragment" />
+            app:destination="@id/tablesFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
         <action
             android:id="@+id/action_mainFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categoriesFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
     <fragment
         android:id="@+id/accountsFragment"
         android:name="com.kserno.foodie.accounts.AccountsFragment"
-        android:label="AccountsFragment" />
+        android:label="AccountsFragment" >
+        <action
+            android:id="@+id/action_accountsFragment_to_addAccountFragment"
+            app:destination="@id/addAccountFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
+    </fragment>
     <fragment
         android:id="@+id/foodsFragment"
         android:name="com.kserno.foodie.foods.FoodsFragment"
         android:label="FoodsFragment" >
         <action
             android:id="@+id/action_foodsFragment_to_addFoodFragment"
-            app:destination="@id/addFoodFragment" />
+            app:destination="@id/addFoodFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
     <fragment
         android:id="@+id/tablesFragment"
@@ -51,6 +79,14 @@
         android:label="CategoriesFragment" >
         <action
             android:id="@+id/action_categoriesFragment_to_foodsFragment"
-            app:destination="@id/foodsFragment" />
+            app:destination="@id/foodsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
+    <fragment
+        android:id="@+id/addAccountFragment"
+        android:name="com.kserno.foodie.addaccount.AddAccountFragment"
+        android:label="AddAccountFragment" />
 </navigation>
