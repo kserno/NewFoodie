@@ -1,12 +1,16 @@
 package app.kserno.foodie.android.order
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.android.R
@@ -41,7 +45,9 @@ class OrderFragment: BaseFragment() {
         val adapter = OrderAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(context!!, 2)
-        viewModel = OrderViewModel(api, wsService)
+
+        viewModel = ViewModelProviders.of(this, OrderFactory(api, wsService)).get(OrderViewModel::class.java)
+
 
         viewModel.data.observe(this, Observer {
             if (it.orders.isEmpty()) {
@@ -90,4 +96,11 @@ class OrderFragment: BaseFragment() {
             }
         })
     }
+}
+
+class OrderFactory(val api: Api, val wsService: WsService): ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return OrderViewModel(api, wsService) as T
+    }
+
 }

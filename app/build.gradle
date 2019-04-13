@@ -38,10 +38,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
     kapt 'com.google.dagger:dagger-compiler:2.22.1'
+    implementation group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: '2.1.0-alpha03'
 
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.1.0-alpha01" // For Kotlin use navigation-fragment-ktx
-    implementation "androidx.navigation:navigation-ui-ktx:2.1.0-alpha01"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.0.0" // For Kotlin use navigation-fragment-ktx
+    implementation "androidx.navigation:navigation-ui-ktx:2.0.0"
 
     implementation 'com.stripe:stripe-android:8.6.0'
 

@@ -1,6 +1,7 @@
 package app.kserno.foodie.android.order
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import app.kserno.foodie.common.Action
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.api.Api
@@ -15,7 +16,7 @@ import io.reactivex.subjects.BehaviorSubject
 class OrderViewModel(
         private val api: Api,
         private val wsService: WsService
-) {
+): ViewModel() {
 
     val data = MutableLiveData<Order>()
 

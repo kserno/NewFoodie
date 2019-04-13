@@ -20,7 +20,6 @@ class FoodViewModel(
     val data = MutableLiveData<List<Food>>()
     val order = MutableLiveData<List<FoodOrderModel>>()
     val actionOrder = MutableLiveData<Action<Void>>()
-    val textPrice = MutableLiveData<String>()
 
 
     init {
@@ -35,8 +34,6 @@ class FoodViewModel(
         api.newOrder
                 .applySchedulers()
                 .subscribe({
-                    val sum = it.sumByDouble { it.count * it.food.price }
-                    textPrice.value = "Total: $sum €"
                     order.postValue(it)
                 }, {
             it.printStackTrace()

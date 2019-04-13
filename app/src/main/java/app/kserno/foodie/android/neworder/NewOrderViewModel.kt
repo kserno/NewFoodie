@@ -49,6 +49,9 @@ class NewOrderViewModel(
             }
         }
         wsService.order(result)
+        actionDone.postValue(Action())
+        api.cancelOrder()
+
     }
 
 

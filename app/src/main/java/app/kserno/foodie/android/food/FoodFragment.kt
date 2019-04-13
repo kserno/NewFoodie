@@ -55,6 +55,8 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
             adapter.items = it
         })
         viewModel.order.observe(this, Observer {
+            val sum = it.sumByDouble { model -> model.count * model.food.price }
+            tvSum.text = "Total: $sum €"
             if (it.isEmpty()) {
                 orderLayout.visibility = View.GONE
             } else {
