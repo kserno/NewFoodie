@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
     <data>
 
         <variable
@@ -9,17 +10,35 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{table.name}"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            tools:text="Table: Table 1"
+            android:text="@{`Table: ` + table.name}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#aaaaaa"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{table.beaconId}"/>
+            android:textSize="13sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="15dp"
+            tools:text="Beacon ID: asfmdfw34ti4tj45t"
+            android:text="@{`Beacon ID: ` + table.beaconId}"/>
 
     </LinearLayout>
 
