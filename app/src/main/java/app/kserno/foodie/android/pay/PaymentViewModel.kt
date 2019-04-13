@@ -25,10 +25,10 @@ class PaymentViewModel(val wsService: WsService, val data: List<FoodOrder>) : Vi
 
 
     fun payClicked() {
-        if (!textBy.value.isNullOrEmpty()) {
+        if (textBy.value.isNullOrEmpty()) {
             return
         }
-        wsService.pay(data, "filip")
+        wsService.pay(data, textBy.value!!)
         actionDone.postValue(Action())
     }
 
