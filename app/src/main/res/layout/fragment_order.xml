@@ -39,7 +39,9 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_height="60dp">
+            android:background="#000000"
+            android:layout_height="60dp"
+            android:visibility="visible">
 
             <Button
                 android:layout_width="match_parent"
@@ -58,7 +60,9 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#000000"
+            android:visibility="gone">
 
             <Button
                 android:layout_width="0dp"
@@ -72,7 +76,8 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:background="#ffffff"/>
 
             <Button
@@ -87,7 +92,8 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:background="#ffffff"/>
 
             <Button
@@ -106,7 +112,9 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#000000"
+            android:visibility="gone">
 
             <Button
                 android:layout_width="0dp"
@@ -120,7 +128,8 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:background="#ffffff"/>
 
             <Button
@@ -135,7 +144,8 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:background="#ffffff"/>
 
             <Button

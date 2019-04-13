@@ -46,16 +46,16 @@ class OrderFragment: BaseFragment() {
         viewModel.data.observe(this, Observer {
             if (it.orders.isEmpty()) {
                 layoutNothingOrdered.visibility = View.VISIBLE
-                layoutOrdered.visibility = View.INVISIBLE
-                layoutAllPaid.visibility = View.INVISIBLE
+                layoutOrdered.visibility = View.GONE
+                layoutAllPaid.visibility = View.GONE
             } else if (it.orders.none { it.paidBy == null }) {
-                layoutNothingOrdered.visibility = View.INVISIBLE
-                layoutOrdered.visibility = View.INVISIBLE
+                layoutNothingOrdered.visibility = View.GONE
+                layoutOrdered.visibility = View.GONE
                 layoutAllPaid.visibility = View.VISIBLE
             } else {
-                layoutNothingOrdered.visibility = View.INVISIBLE
+                layoutNothingOrdered.visibility = View.GONE
                 layoutOrdered.visibility = View.VISIBLE
-                layoutAllPaid.visibility = View.INVISIBLE
+                layoutAllPaid.visibility = View.GONE
             }
 
             adapter.items = it.orders.filter { it.paidBy == null }
