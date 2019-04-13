@@ -1,5 +1,6 @@
 package app.kserno.foodie.android.paying
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,11 @@ class PayingAdapter: RecyclerView.Adapter<PayingAdapter.ViewHolder>() {
 
         fun update(item: FoodOrder, selected: Boolean) {
             binding?.food = item.food
-            binding?.selected = selected
+            if (selected) {
+                itemView.setBackgroundColor(Color.parseColor("#d2d2d2"))
+            } else {
+                itemView.setBackgroundColor(Color.parseColor("#ffffff"))
+            }
             binding?.executePendingBindings()
             itemView.setOnClickListener {
                 selection[adapterPosition] = !selection[adapterPosition]

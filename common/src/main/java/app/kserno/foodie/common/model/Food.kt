@@ -17,6 +17,9 @@ data class Food(
         val photoUrl: String,
         val price: Double
 ): Parcelable {
+    val prettyPrice: String
+        get() = "$price €"
+
     companion object {
         internal fun fromParseObject(parseObject: ParseObject) :Food {
             return Food(

@@ -1,6 +1,7 @@
 package app.kserno.foodie.android.detail
 
 import androidx.lifecycle.MutableLiveData
+import app.kserno.foodie.common.Action
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.applySchedulers
 import app.kserno.foodie.common.model.Food
@@ -14,8 +15,11 @@ class FoodDetailViewModel(val api: Api, foodIn: Food) {
 
     val food = MutableLiveData<Food>().apply { value = foodIn }
 
+    val actionAdded = MutableLiveData<Action<Void>>()
+
     fun orderClicked() {
         api.addFoodToOrder(food.value!!)
+        actionAdded.postValue(Action())
     }
 
 }
