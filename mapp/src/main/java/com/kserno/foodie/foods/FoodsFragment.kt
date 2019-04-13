@@ -28,7 +28,7 @@ class FoodsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DataBindingUtil.bind(view)!!
-        viewModel = FoodsViewModel(ParseApi(context!!))
+        viewModel = FoodsViewModel(api, FoodsFragmentArgs.fromBundle(arguments!!).foodCategory)
         binding.viewModel = viewModel
 
         val adapter = FoodsAdapter()

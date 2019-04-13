@@ -10,6 +10,7 @@ class ManagerApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         CalligraphyConfig.initDefault(CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/Montserrat-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)

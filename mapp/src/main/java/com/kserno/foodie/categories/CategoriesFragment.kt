@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_categories.*
 class CategoriesFragment: Fragment(), Adapter.Listener<FoodCategory> {
 
     override fun onItemSelected(item: FoodCategory) {
-        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodsFragment()
+        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodsFragment(item)
         findNavController().navigate(dirs)
     }
 

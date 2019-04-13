@@ -29,5 +29,6 @@ class AddTableDialog: DialogFragment() {
         viewModel = AddTableViewModel(ParseApi(context!!))
 
         binding.viewModel = viewModel
+
     }
 }
