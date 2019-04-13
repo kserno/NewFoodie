@@ -18,6 +18,7 @@ import android.content.IntentFilter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.util.Log
+import androidx.navigation.NavController
 import app.kserno.foodie.android.di.MainModule
 import app.kserno.foodie.common.applySchedulers
 import app.kserno.foodie.common.model.FoodWs
@@ -42,6 +43,8 @@ class MainActivity: AppCompatActivity() {
     private var pendingIntent: PendingIntent? = null
     lateinit var component: MainComponent
 
+    var controller: NavController? = null
+
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
@@ -51,7 +54,7 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //newOrderSubject.onNext(null)
 
-        val navController = findNavController(R.id.navHostFragment)
+        controller = findNavController(R.id.navHostFragment)
 
 
         component = DaggerMainComponent.builder()

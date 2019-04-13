@@ -92,7 +92,7 @@ class OrderFragment: BaseFragment() {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
                 val dirs = OrderFragmentDirections.actionOrderFragmentToPayingFragment()
-                findNavController().navigate(dirs)
+                mainActivity?.controller?.navigate(dirs)
             }
         })
     }

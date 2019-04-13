@@ -47,9 +47,9 @@ class NewOrderFragment: BaseFragment() {
         viewModel.actionDone.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                //InfoDialog.create("Bon Appetit!", "Your order will be delivered shortly. :-)")
-                //        .show(childFragmentManager, "tag")
-                findNavController().popBackStack(R.id.orderFragment, true)
+                InfoDialog.create("Bon Appetit!", "Your order will be delivered shortly. :-)")
+                        .show(childFragmentManager, "tag")
+                //findNavController().navigateUp()
 
             }
         })

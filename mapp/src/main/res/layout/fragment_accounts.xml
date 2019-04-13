@@ -11,19 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Too
+
         <Button
             android:id="@+id/btAdd"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
             android:layout_alignParentBottom="true"
-            android:text="Add"/>
+            android:text="New account"
+            android:onClick="@{() -> viewModel.newClicked}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/btAdd"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            android:layout_marginBottom="-2dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
 

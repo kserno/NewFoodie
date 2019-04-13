@@ -42,9 +42,9 @@ class PaymentFragment: BaseFragment() {
         viewModel.actionDone.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                //InfoDialog.create("Thank you!", "Thanks from Food.io team for paying your order <3")
-                //        .show(, "t")
-                findNavController().popBackStack(R.id.orderFragment, true)
+                InfoDialog.create("Thank you!", "Thanks from Food.io team for paying your order <3")
+                        .show(childFragmentManager, "t")
+                //findNavController().navigate(R.id.orderFragment)
 
             }
         })
