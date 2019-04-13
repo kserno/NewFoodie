@@ -35,8 +35,8 @@ class CategoriesViewModel(
                 applySchedulers()
                 .subscribe({
                     order.postValue(it)
-                    val sum = it.sumByDouble { it.count * it.food.price }
-                    textPrice.postValue("Total: $sum")
+                    val sum = it.sumByDouble { model -> model.count * model.food.price }
+                    textPrice.value = "Total: $sum €"
                 }, {
                     it.printStackTrace()
                 })

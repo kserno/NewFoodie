@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
+import app.kserno.foodie.android.dialog.InfoDialog
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.model.Food
 import com.bumptech.glide.Glide
@@ -38,6 +40,12 @@ class FoodDetailFragment: BaseFragment() {
         viewModel = FoodDetailViewModel(api, food!!)
         binding.viewModel = viewModel
 
+        viewModel.actionAdded.observe(this, Observer {
+            if (!it.hasBeenHandled) {
+                it.getContentIfNotHandled()
+                InfoDialog().show(fragmentManager!!, "1")
+            }
+        })
 
     }
 }

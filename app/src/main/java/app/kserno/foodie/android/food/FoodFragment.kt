@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -38,11 +39,13 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
 
         mainActivity?.component?.inject(this)
 
+        binding = DataBindingUtil.bind(view)!!
+
         val args = FoodFragmentArgs.fromBundle(arguments!!)
 
         adapter = FoodAdapter()
         viewModel = FoodViewModel(api, args.categoryId)
-
+        binding.viewModel = viewModel
 
         adapter.listener = this
         recyclerView.adapter = adapter
