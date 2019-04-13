@@ -34,7 +34,7 @@ class FoodsFragment: BaseFragment() {
         mainActivity?.component?.inject(this)
 
         binding = DataBindingUtil.bind(view)!!
-        viewModel = FoodsViewModel(api)
+        viewModel = FoodsViewModel(api, FoodsFragmentArgs.fromBundle(arguments!!).foodCategory)
         binding.viewModel = viewModel
 
         val adapter = FoodsAdapter()

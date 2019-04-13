@@ -95,6 +95,7 @@ class ParseApi(context: Context): Api {
             user.username = username
             user.setPassword(password)
             user.put("name", name)
+            user.put("restaurantId", "0UDfSY7pyQ")
             user.signUpInBackground { e ->
                 if (e != null) {
                     it.onError(e)

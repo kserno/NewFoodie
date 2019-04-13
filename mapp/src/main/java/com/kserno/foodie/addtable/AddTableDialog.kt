@@ -36,5 +36,6 @@ class AddTableDialog: DialogFragment() {
         viewModel = AddTableViewModel(api)
 
         binding.viewModel = viewModel
+
     }
 }

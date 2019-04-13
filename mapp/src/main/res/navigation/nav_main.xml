@@ -64,6 +64,9 @@
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in_pop"
             app:popExitAnim="@anim/slide_out_pop" />
+        <argument
+            android:name="foodCategory"
+            app:argType="app.kserno.foodie.common.model.FoodCategory" />
     </fragment>
     <fragment
         android:id="@+id/tablesFragment"
