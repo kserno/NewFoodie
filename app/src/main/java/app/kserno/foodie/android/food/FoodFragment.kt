@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.databinding.FragmentFoodBinding
 import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
@@ -30,7 +31,7 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
 
     override val layoutId: Int = R.layout.fragment_food
 
-    lateinit var binding: FragmentFOod
+    lateinit var binding: FragmentFoodBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
