@@ -2,6 +2,7 @@ package app.kserno.foodie.android.categories
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.android.food.FoodCategoriesAdapter
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.databinding.FragmentCategoriesBinding
 import app.kserno.foodie.android.food.FoodFragmentDirections
 import app.kserno.foodie.common.VerticalSpaceItemDecoration
 import app.kserno.foodie.common.api.ParseApi
@@ -33,7 +35,7 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
     lateinit var adapter: FoodCategoriesAdapter
     @Inject lateinit var parseApi: ParseApi
 
-    //lateinit var binding: FragmentCa
+    lateinit var binding: FragmentCategoriesBinding
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,11 +43,15 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
 
         mainActivity?.component?.inject(this)
 
+        binding = DataBindingUtil.bind(view)!!
+
         adapter = FoodCategoriesAdapter()
         adapter.listener = this
         viewModel = CategoriesViewModel(parseApi)
 
+        binding.viewModel = viewModel
         recyclerView.adapter = adapter
+
 
         viewModel.data.observe(this, Observer {
             adapter.items = it

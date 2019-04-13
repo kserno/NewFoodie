@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.databinding.FragmentFoodBinding
 import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
@@ -30,18 +32,20 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
 
     override val layoutId: Int = R.layout.fragment_food
 
-    lateinit var binding: FragmentFOod
+    lateinit var binding: FragmentFoodBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         mainActivity?.component?.inject(this)
 
+        binding = DataBindingUtil.bind(view)!!
+
         val args = FoodFragmentArgs.fromBundle(arguments!!)
 
         adapter = FoodAdapter()
         viewModel = FoodViewModel(api, args.categoryId)
-
+        binding.viewModel = viewModel
 
         adapter.listener = this
         recyclerView.adapter = adapter

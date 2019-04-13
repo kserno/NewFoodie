@@ -35,10 +35,9 @@ class FoodViewModel(
         api.newOrder
                 .applySchedulers()
                 .subscribe({
-                    order.postValue(it)
                     val sum = it.sumByDouble { it.count * it.food.price }
-                    textPrice.postValue("Total: $sum")
-
+                    textPrice.value = "Total: $sum €"
+                    order.postValue(it)
                 }, {
             it.printStackTrace()
         })
