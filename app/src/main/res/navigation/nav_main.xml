@@ -4,6 +4,7 @@
     app:startDestination="@id/orderFragment">
 
     <fragment
+
         android:id="@+id/orderFragment"
         android:name="app.kserno.foodie.android.order.OrderFragment"
         android:label="OrderFragment" >

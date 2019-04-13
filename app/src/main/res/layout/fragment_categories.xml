@@ -56,9 +56,9 @@
                 android:layout_weight=".7"/>
 
             <TextView
+                android:id="@+id/tvSum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="@{viewModel.textPrice}"
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:layout_weight=".3"

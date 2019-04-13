@@ -43,7 +43,7 @@ class FoodDetailFragment: BaseFragment() {
         viewModel.actionAdded.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                InfoDialog().show(fragmentManager!!, "1")
+                InfoDialog.create("Success", "Meal has been added to order").show(fragmentManager!!, "1")
             }
         })
 

@@ -55,9 +55,9 @@
                 android:layout_weight=".7"/>
 
             <TextView
+                android:id="@+id/tvSum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="PIcovina"
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:layout_weight=".3"
