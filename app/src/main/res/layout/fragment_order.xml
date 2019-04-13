@@ -31,8 +31,9 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/layoutNothingOrdered"
             android:layout_below="@id/toolbar"
-            android:layout_above="@+id/layoutNothingOrdered"/>
+            android:layout_marginBottom="60dp" />
 
         <LinearLayout
             android:id="@+id/layoutNothingOrdered"
