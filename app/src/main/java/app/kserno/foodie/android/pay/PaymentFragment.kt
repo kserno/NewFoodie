@@ -2,9 +2,12 @@ package app.kserno.foodie.android.pay
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
+import app.kserno.foodie.android.databinding.FragmentPaymentBinding
 import app.kserno.foodie.common.WsService
+import app.kserno.foodie.common.model.FoodOrder
 import javax.inject.Inject
 
 /**
@@ -16,6 +19,8 @@ class PaymentFragment: BaseFragment() {
 
     lateinit var viewModel: PaymentViewModel
 
+    lateinit var binding: FragmentPaymentBinding
+
     @Inject lateinit var wsService: WsService
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,7 +28,11 @@ class PaymentFragment: BaseFragment() {
 
         mainActivity?.component?.inject(this)
 
-        viewModel = PaymentViewModel(wsService)
+        binding = DataBindingUtil.bind(view)!!
 
+        val data = arguments?.getParcelableArrayList<FoodOrder>("data") as List<FoodOrder>
+
+        viewModel = PaymentViewModel(wsService, data)
+        binding.viewModel = viewModel
     }
 }

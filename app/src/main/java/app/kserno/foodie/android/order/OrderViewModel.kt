@@ -1,6 +1,7 @@
 package app.kserno.foodie.android.order
 
 import androidx.lifecycle.MutableLiveData
+import app.kserno.foodie.common.Action
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.applySchedulers
@@ -18,6 +19,14 @@ class OrderViewModel(
 
     val data = MutableLiveData<Order>()
 
+    val actionOrder = MutableLiveData<Action<Void>>()
+    val actionPaid = MutableLiveData<Action<Void>>()
+    val actionClose = MutableLiveData<Action<Void>>()
+    val actionPay = MutableLiveData<Action<Void>>()
+
+
+
+
     init {
         wsService.getObservable()
                 .applySchedulers()
@@ -29,6 +38,21 @@ class OrderViewModel(
     }
 
 
+    fun orderClicked() {
+        actionOrder.postValue(Action())
+    }
+
+    fun paidClicked() {
+        actionPaid.postValue(Action())
+    }
+
+    fun closeClicked() {
+        //actionClose.postValue(Action())
+    }
+
+    fun payClicked() {
+        actionPay.postValue(Action())
+    }
 
 
 }

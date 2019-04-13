@@ -35,8 +35,10 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
 
         mainActivity?.component?.inject(this)
 
+        val args = FoodFragmentArgs.fromBundle(arguments!!)
+
         adapter = FoodAdapter()
-        viewModel = FoodViewModel(api)
+        viewModel = FoodViewModel(api, args.categoryId)
 
 
         adapter.listener = this

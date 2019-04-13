@@ -6,6 +6,7 @@ import app.kserno.foodie.android.food.FoodFragment
 import app.kserno.foodie.android.main.MainActivity
 import app.kserno.foodie.android.neworder.NewOrderFragment
 import app.kserno.foodie.android.order.OrderFragment
+import app.kserno.foodie.android.paid.PaidFragment
 import app.kserno.foodie.android.pay.PaymentFragment
 import app.kserno.foodie.android.paying.PayingFragment
 import dagger.Component
@@ -27,5 +28,6 @@ interface MainComponent {
     fun inject(orderFragment: OrderFragment)
     fun inject(payingFragment: PayingFragment)
     fun inject(paymentFragment: PaymentFragment)
+    fun inject(paidFragment: PaidFragment)
 
 }

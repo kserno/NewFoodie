@@ -7,6 +7,9 @@
             name="food"
             type="app.kserno.foodie.common.model.FoodWs" />
 
+        <variable
+            name="foodOrder"
+            type="app.kserno.foodie.common.model.FoodOrder" />
 
 
     </data>
@@ -48,6 +51,18 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@{String.valueOf(food.price)}"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="1,20 e"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{foodOrder.paidBy}"
                 android:textSize="14sp"
                 android:layout_marginBottom="8dp"
 

@@ -6,10 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentPayingBinding
 import app.kserno.foodie.common.WsService
+import kotlinx.android.synthetic.main.fragment_paying.*
 import javax.inject.Inject
 
 /**
@@ -31,11 +33,19 @@ class PayingFragment: BaseFragment() {
 
         viewModel = PayingViewModel(wsService)
 
+        val adapter = PayingAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = GridLayoutManager(context!!, 2)
+
+        viewModel.data.observe(this, Observer {
+            adapter.items = it.orders.filter { it.paidBy == null }
+        })
+
         viewModel.actionGateway.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                val dirs = PayingFragmentDirections.actionPayingFragmentToPaymentFragment()
-                findNavController().navigate(dirs)
+                val bundle = Bundle().apply { putParcelableArrayList("data", ArrayList(adapter.getSelected()))}
+                findNavController().navigate(R.id.action_payingFragment_to_paymentFragment, bundle)
             }
         })
 
@@ -43,4 +53,6 @@ class PayingFragment: BaseFragment() {
 
 
     }
+
+
 }

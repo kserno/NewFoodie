@@ -32,7 +32,6 @@ class NewOrderViewModel(
                 })
     }
 
-
     fun placeOrderClicked() {
         val list = data.value!!
         val result = ArrayList<FoodOrder>()

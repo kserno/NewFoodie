@@ -9,10 +9,25 @@
         android:label="OrderFragment" >
         <action
             android:id="@+id/action_orderFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categoriesFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
         <action
             android:id="@+id/action_orderFragment_to_payingFragment"
-            app:destination="@id/payingFragment" />
+            app:destination="@id/payingFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
+        <action
+            android:id="@+id/action_orderFragment_to_paidFragment"
+            app:destination="@id/paidFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
 
     <fragment
@@ -21,10 +36,18 @@
         android:label="CategoriesFragment" >
         <action
             android:id="@+id/action_categoriesFragment_to_foodFragment"
-            app:destination="@id/foodFragment" />
+            app:destination="@id/foodFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
         <action
             android:id="@+id/action_categoriesFragment_to_newOrderFragment"
-            app:destination="@id/newOrderFragment" />
+            app:destination="@id/newOrderFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
     <fragment
         android:id="@+id/foodFragment"
@@ -32,10 +55,21 @@
         android:label="FoodFragment" >
         <action
             android:id="@+id/action_foodFragment_to_foodDetailFragment"
-            app:destination="@id/foodDetailFragment" />
+            app:destination="@id/foodDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
         <action
             android:id="@+id/action_foodFragment_to_newOrderFragment"
-            app:destination="@id/newOrderFragment" />
+            app:destination="@id/newOrderFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"
@@ -55,6 +89,14 @@
         android:label="PayingFragment" >
         <action
             android:id="@+id/action_payingFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
+    <fragment
+        android:id="@+id/paidFragment"
+        android:name="app.kserno.foodie.android.paid.PaidFragment"
+        android:label="PaidFragment" />
 </navigation>

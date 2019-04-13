@@ -2,7 +2,9 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="app.kserno.foodie.android.order.OrderViewModel" />
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -40,26 +42,113 @@
             android:layout_height="60dp">
 
             <Button
-                android:id="@+id/btOrder"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".5"
                 android:background="#000000"
                 android:textColor="#ffffff"
-                android:text="Order"/>
+                android:text="Order"
+                android:onClick="@{() -> viewModel.orderClicked()}"/>
 
-            <Button
-                android:id="@+id/btCallWaiter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:background="#000000"
-                android:textColor="#ffffff"
-                android:text="Call waiter"/>
 
         </LinearLayout>
 
 
+        <LinearLayout
+            android:id="@+id/layoutOrdered"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_height="60dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Order more"
+                android:onClick="@{() -> viewModel.orderClicked()}"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+
+                android:background="#ffffff"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Pay"
+                android:onClick="@{() -> viewModel.payClicked()}"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+
+                android:background="#ffffff"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Show paid"
+                android:onClick="@{() -> viewModel.paidClicked()}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAllPaid"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_height="60dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Order more"
+                android:onClick="@{() -> viewModel.orderClicked()}"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+
+                android:background="#ffffff"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Close"
+                android:onClick="@{() -> viewModel.closeClicked()}"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+
+                android:background="#ffffff"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".33"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:text="Show paid"
+                android:onClick="@{() -> viewModel.paidClicked()}"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
+
 </layout>
