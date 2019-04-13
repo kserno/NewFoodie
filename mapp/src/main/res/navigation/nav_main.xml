@@ -71,11 +71,19 @@
     <fragment
         android:id="@+id/tablesFragment"
         android:name="com.kserno.foodie.tables.TablesFragment"
-        android:label="TablesFragment" />
+        android:label="TablesFragment" >
+        <action
+            android:id="@+id/action_tablesFragment_to_tableFragment"
+            app:destination="@id/tableFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.kserno.foodie.addfood.AddFoodFragment"
-        android:label="AddFoodFragment" />
+        android:label="AddFoodFragment" >
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.kserno.foodie.categories.CategoriesFragment"
@@ -92,4 +100,8 @@
         android:id="@+id/addAccountFragment"
         android:name="com.kserno.foodie.addaccount.AddAccountFragment"
         android:label="AddAccountFragment" />
+    <fragment
+        android:id="@+id/tableFragment"
+        android:name="com.kserno.foodie.table.TableFragment"
+        android:label="TableFragment" />
 </navigation>

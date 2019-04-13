@@ -61,7 +61,7 @@ class ParseApi(context: Context): Api {
 
 
 
-    override fun addFood(name: String, description: String, price: Double, image: File): Completable {
+    override fun addFood(name: String, description: String, price: Double, categoryId: String, image: File): Completable {
         return Completable.create {
             val file = ParseFile(image.name, image.readBytes())
             file.saveInBackground { e: ParseException? ->
@@ -73,9 +73,9 @@ class ParseApi(context: Context): Api {
                 food.put("name", name)
                 food.put("description", description)
                 food.put("price", price)
+                food.put("categoryId", categoryId)
                 food.put("photoUrl", file.url)
                 food.put("restaurantId", getCurrentUser()!!.restaurantId)
-                food.put("categoryId", "")
                 food.saveInBackground { ex ->
                     if (ex != null) {
                         it.onError(ex)

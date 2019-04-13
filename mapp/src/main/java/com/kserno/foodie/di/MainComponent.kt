@@ -9,6 +9,7 @@ import com.kserno.foodie.categories.CategoriesFragment
 import com.kserno.foodie.foods.FoodsFragment
 import com.kserno.foodie.login.LoginFragment
 import com.kserno.foodie.main.MainFragment
+import com.kserno.foodie.table.TableFragment
 import com.kserno.foodie.tables.TablesFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -30,5 +31,7 @@ interface MainComponent {
     fun inject(categoriesFragment: CategoriesFragment)
     fun inject(foodsFragment: FoodsFragment)
     fun inject(tablesFragment: TablesFragment)
+    fun inject(tableFragment: TableFragment)
+
 
 }

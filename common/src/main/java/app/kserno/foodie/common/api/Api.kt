@@ -43,7 +43,7 @@ interface Api {
 
     fun addAccount(name: String, username: String, password: String): Completable
 
-    fun addFood(name: String, description: String, price: Double, image: File) : Completable
+    fun addFood(name: String, description: String, price: Double, categoryId: String, image: File) : Completable
 
     fun cancelOrder()
 

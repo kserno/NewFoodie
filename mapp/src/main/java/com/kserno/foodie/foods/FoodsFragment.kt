@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import app.kserno.foodie.common.VerticalSpaceItemDecoration
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.R
@@ -34,16 +35,18 @@ class FoodsFragment: BaseFragment() {
         mainActivity?.component?.inject(this)
 
         binding = DataBindingUtil.bind(view)!!
-        //viewModel = FoodsViewModel(api, )
+        val args = FoodsFragmentArgs.fromBundle(arguments!!)
+        viewModel = FoodsViewModel(api, args.foodCategory)
         binding.viewModel = viewModel
 
         val adapter = FoodsAdapter()
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(VerticalSpaceItemDecoration(32))
 
         viewModel.actionNew.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
-                val dirs = FoodsFragmentDirections.actionFoodsFragmentToAddFoodFragment()
+                val dirs = FoodsFragmentDirections.actionFoodsFragmentToAddFoodFragment(args.foodCategory.id)
                 findNavController().navigate(dirs)
             }
         })

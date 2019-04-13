@@ -33,4 +33,15 @@ class TablesViewModel(
         actionNew.postValue(Action())
     }
 
+    fun refresh() {
+        api.getTables(api.getCurrentUser()!!.restaurantId)
+                .applySchedulers()
+                .subscribe({
+                    isLoading.postValue(false)
+                    data.postValue(it)
+                }, {
+                    it.printStackTrace()
+                })
+    }
+
 }

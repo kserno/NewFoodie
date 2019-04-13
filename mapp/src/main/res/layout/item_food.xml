@@ -9,25 +9,37 @@
             type="app.kserno.foodie.common.model.Food" />
         
     </data>
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:orientation="horizontal">
-        
-        <ImageView
-            android:layout_width="110dp"
-            android:layout_height="match_parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="center_vertical"
-            android:textSize="20sp"
-            tools:text="Burritos"
-            android:text="@{food.name}"/>
-        
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{food.photoUrl}"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                tools:text="Burritos"
+                android:text="@{food.name}"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
     
 </layout>

@@ -26,7 +26,7 @@ class CategoriesFragment: BaseFragment(), Adapter.Listener<FoodCategory> {
     override val layoutId: Int = R.layout.fragment_categories
 
     override fun onItemSelected(item: FoodCategory) {
-        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodsFragment()
+        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodsFragment(item)
         findNavController().navigate(dirs)
     }
 

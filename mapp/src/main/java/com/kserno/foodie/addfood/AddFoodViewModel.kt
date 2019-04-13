@@ -10,7 +10,7 @@ import java.io.File
 /**
  *  Created by filipsollar on 2019-04-10
  */
-class AddFoodViewModel(private val api: Api): ViewModel() {
+class AddFoodViewModel(private val api: Api, val categoryId: String): ViewModel() {
 
     val actionPickPhoto = MutableLiveData<Action<Void>>()
     val actionDone = MutableLiveData<Action<Void>>()
@@ -29,6 +29,7 @@ class AddFoodViewModel(private val api: Api): ViewModel() {
                 name.value ?: "",
                 description.value?: "",
                 price.value?.toDouble() ?: 0.0,
+                categoryId,
                 photo.value!!)
                 .applySchedulers()
                 .subscribe({

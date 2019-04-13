@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.MainActivity
@@ -36,5 +37,12 @@ class AddTableDialog: DialogFragment() {
         viewModel = AddTableViewModel(api)
 
         binding.viewModel = viewModel
+        viewModel.actionDone.observe(this, Observer {
+            if (!it.hasBeenHandled) {
+                it.getContentIfNotHandled()
+                dismiss()
+            }
+        })
+
     }
 }

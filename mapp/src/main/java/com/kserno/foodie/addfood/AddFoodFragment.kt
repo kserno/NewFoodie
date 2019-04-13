@@ -46,8 +46,10 @@ class AddFoodFragment: BaseFragment() {
 
         mainActivity?.component?.inject(this)
 
+        val args = AddFoodFragmentArgs.fromBundle(arguments!!)
+
         binding = DataBindingUtil.bind(view)!!
-        viewModel = AddFoodViewModel(api)
+        viewModel = AddFoodViewModel(api, args.categoryId)
         binding.viewModel = viewModel
 
         viewModel.actionPickPhoto.observe(this, Observer {

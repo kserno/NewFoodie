@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import app.kserno.foodie.common.VerticalSpaceItemDecoration
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.R
@@ -39,6 +40,7 @@ class AccountsFragment: BaseFragment() {
 
         val adapter = AccountAdapter()
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(VerticalSpaceItemDecoration(32))
 
         viewModel.users.observe(this, Observer {
             adapter.items = it

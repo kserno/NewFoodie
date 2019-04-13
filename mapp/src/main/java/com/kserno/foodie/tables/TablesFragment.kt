@@ -1,5 +1,6 @@
 package com.kserno.foodie.tables
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
+import app.kserno.foodie.common.model.Table
 import com.kserno.foodie.R
 import com.kserno.foodie.addtable.AddTableDialog
 import com.kserno.foodie.base.BaseFragment
@@ -19,7 +23,13 @@ import javax.inject.Inject
 /**
  *  Created by filipsollar on 2019-04-03
  */
-class TablesFragment: BaseFragment() {
+class TablesFragment: BaseFragment(), Adapter.Listener<Table> {
+
+    override fun onItemSelected(item: Table) {
+        val dirs = TablesFragmentDirections.actionTablesFragmentToTableFragment()
+        findNavController().navigate(dirs)
+    }
+
     override val layoutId: Int = R.layout.fragment_tables
 
     lateinit var viewModel: TablesViewModel
@@ -37,6 +47,7 @@ class TablesFragment: BaseFragment() {
         binding.viewModel = viewModel
 
         val adapter = TablesAdapter()
+        adapter.listener = this
         recyclerView.adapter = adapter
         viewModel.data.observe(this, Observer {
             adapter.items = it
@@ -46,6 +57,16 @@ class TablesFragment: BaseFragment() {
                 it.getContentIfNotHandled()
                 val dialog = AddTableDialog()
                 dialog.show(fragmentManager!!, "0")
+                dialog.onDismiss(object: DialogInterface{
+                    override fun dismiss() {
+                        viewModel.refresh()
+                    }
+
+                    override fun cancel() {
+
+                    }
+
+                })
             }
         })
     }
