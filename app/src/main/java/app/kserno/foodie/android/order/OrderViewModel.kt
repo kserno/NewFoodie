@@ -48,7 +48,8 @@ class OrderViewModel(
     }
 
     fun closeClicked() {
-        //actionClose.postValue(Action())
+        wsService.closeOrder()
+        actionClose.postValue(Action())
     }
 
     fun payClicked() {

@@ -48,6 +48,8 @@ dependencies {
 
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
+    implementation 'com.estimote:proximity-sdk:1.0.3'
+
 
     implementation 'androidx.core:core-ktx:1.1.0-alpha05'
     testImplementation 'junit:junit:4.12'
