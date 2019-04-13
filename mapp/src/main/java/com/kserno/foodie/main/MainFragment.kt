@@ -8,28 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import app.kserno.foodie.common.api.Api
 import com.kserno.foodie.PersistentLayer
 import com.kserno.foodie.R
+import com.kserno.foodie.base.BaseFragment
 import com.kserno.foodie.databinding.FragmentMainBinding
 import com.squareup.moshi.Moshi
+import javax.inject.Inject
 
 /**
  *  Created by filipsollar on 2019-04-03
  */
-class MainFragment: Fragment() {
+class MainFragment: BaseFragment() {
+    override val layoutId: Int = R.layout.fragment_main
+
 
     lateinit var viewModel: MainViewModel
     lateinit var binding: FragmentMainBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    @Inject lateinit var api: Api
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mainActivity?.component?.inject(this)
         binding = DataBindingUtil.bind(view)!!
 
-        viewModel = MainViewModel(PersistentLayer(context!!, Moshi.Builder().build()))
+        viewModel = MainViewModel(api)
         binding.viewModel = viewModel
         bindActions()
     }

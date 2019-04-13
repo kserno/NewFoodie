@@ -7,29 +7,33 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.R
 import com.kserno.foodie.addtable.AddTableDialog
+import com.kserno.foodie.base.BaseFragment
 import com.kserno.foodie.databinding.FragmentTablesBinding
 import kotlinx.android.synthetic.main.fragment_tables.*
+import javax.inject.Inject
 
 /**
  *  Created by filipsollar on 2019-04-03
  */
-class TablesFragment: Fragment() {
+class TablesFragment: BaseFragment() {
+    override val layoutId: Int = R.layout.fragment_tables
 
     lateinit var viewModel: TablesViewModel
     lateinit var binding: FragmentTablesBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tables, container, false)
-    }
+    @Inject lateinit var api: Api
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mainActivity?.component?.inject(this)
         binding = DataBindingUtil.bind(view)!!
 
-        viewModel = TablesViewModel(ParseApi(context!!))
+        viewModel = TablesViewModel(api)
         binding.viewModel = viewModel
 
         val adapter = TablesAdapter()

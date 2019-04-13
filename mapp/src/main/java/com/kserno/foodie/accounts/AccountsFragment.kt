@@ -8,27 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
 import com.kserno.foodie.R
+import com.kserno.foodie.base.BaseFragment
 import com.kserno.foodie.databinding.FragmentAccountsBinding
 import kotlinx.android.synthetic.main.fragment_accounts.*
+import javax.inject.Inject
 
 /**
  *  Created by filipsollar on 2019-04-03
  */
-class AccountsFragment: Fragment() {
+class AccountsFragment: BaseFragment() {
+    override val layoutId: Int = R.layout.fragment_accounts
+
 
     lateinit var viewModel: AccountsViewModel
     lateinit var binding: FragmentAccountsBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_accounts, container, false)
-    }
+    @Inject lateinit var api: Api
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DataBindingUtil.bind(view)!!
-        viewModel = AccountsViewModel(ParseApi(context!!))
+
+        mainActivity?.component?.inject(this)
+
+        viewModel = AccountsViewModel(api)
         binding.viewModel = viewModel
 
         val adapter = AccountAdapter()

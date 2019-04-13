@@ -11,8 +11,7 @@ import com.kserno.foodie.PersistentLayer
  *  Created by filipsollar on 2019-04-03
  */
 class LoginViewModel(
-        private val api: Api,
-        private val persistentLayer: PersistentLayer
+        private val api: Api
 ): ViewModel() {
 
     val username = MutableLiveData<String>()
@@ -26,7 +25,6 @@ class LoginViewModel(
         api.login(username.value ?: "", password.value ?: "")
                 .applySchedulers()
                 .subscribe({
-                    persistentLayer.currentUser = it
                     actionNext.postValue(Action())
                 }, {
                     actionError.postValue(Action())

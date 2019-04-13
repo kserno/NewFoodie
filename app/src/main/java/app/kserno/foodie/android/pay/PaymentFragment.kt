@@ -1,15 +1,13 @@
 package app.kserno.foodie.android.pay
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentPaymentBinding
-import app.kserno.foodie.android.dialog.InfoDialog
+import app.kserno.foodie.common.dialog.InfoDialog
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.model.FoodOrder
 import javax.inject.Inject

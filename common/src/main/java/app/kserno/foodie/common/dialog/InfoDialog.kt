@@ -1,15 +1,12 @@
-package app.kserno.foodie.android.dialog
+package app.kserno.foodie.common.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import app.kserno.foodie.android.R
+import app.kserno.foodie.common.R
 import kotlinx.android.synthetic.main.dialog_info.*
-
-
 
 
 /**
