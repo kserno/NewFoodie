@@ -78,24 +78,11 @@
                 android:text="Accounts"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
-                app:layout_constraintBottom_toTopOf="@+id/btOrders"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btFoods" />
 
-            <Button
-                android:id="@+id/btOrders"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                android:onClick="@{() -> viewModel.ordersClicked()}"
-                android:text="Orders"
-                android:textAllCaps="true"
-                android:textColor="#ffffff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btAccounts" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
