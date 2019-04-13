@@ -74,7 +74,11 @@
         android:label="TablesFragment" >
         <action
             android:id="@+id/action_tablesFragment_to_tableFragment"
-            app:destination="@id/tableFragment" />
+            app:destination="@id/tableFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in_pop"
+            app:popExitAnim="@anim/slide_out_pop" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"

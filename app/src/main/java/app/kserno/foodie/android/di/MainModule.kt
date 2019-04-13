@@ -31,8 +31,8 @@ class MainModule(
 
     @Singleton
     @Provides
-    fun providesWsService(moshi: Moshi) : WsService {
-        return WsService(moshi)
+    fun providesWsService(moshi: Moshi, context: Context) : WsService {
+        return WsService(moshi, context)
     }
 
     @Singleton

@@ -55,6 +55,7 @@
                 />
 
             <Button
+                android:id="@+id/btOrder"
                 android:layout_width="match_parent"
                 android:layout_height="32sp"
                 android:textColor="#ffffff"

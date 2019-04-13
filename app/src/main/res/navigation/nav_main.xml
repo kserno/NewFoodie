@@ -70,8 +70,8 @@
             app:popExitAnim="@anim/slide_out_pop"
           />
         <argument
-            android:name="categoryId"
-            app:argType="string" />
+            android:name="category"
+            app:argType="app.kserno.foodie.common.model.FoodCategory" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"

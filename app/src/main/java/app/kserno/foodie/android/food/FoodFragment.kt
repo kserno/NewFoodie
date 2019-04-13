@@ -23,8 +23,10 @@ import javax.inject.Inject
 /**
  *  Created by filipsollar on 2019-03-27
  */
-class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
-
+class FoodFragment: BaseFragment(), FoodAdapter.Listener {
+    override fun onOrderClicked(food: Food) {
+        viewModel.orderSelected(food)
+    }
 
     lateinit var viewModel: FoodViewModel
     lateinit var adapter: FoodAdapter
@@ -44,7 +46,7 @@ class FoodFragment: BaseFragment(), Adapter.Listener<Food> {
         val args = FoodFragmentArgs.fromBundle(arguments!!)
 
         adapter = FoodAdapter()
-        viewModel = FoodViewModel(api, args.categoryId)
+        viewModel = FoodViewModel(api, args.category)
         binding.viewModel = viewModel
 
         adapter.listener = this

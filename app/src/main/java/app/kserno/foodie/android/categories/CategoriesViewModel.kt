@@ -21,6 +21,7 @@ class CategoriesViewModel(
     val order = MutableLiveData<List<FoodOrderModel>>()
     val actionOrder = MutableLiveData<Action<Void>>()
 
+
     init {
         api.getFoodCategories()
                 .applySchedulers()

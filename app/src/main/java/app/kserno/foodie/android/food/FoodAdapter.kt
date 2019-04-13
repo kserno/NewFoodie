@@ -18,14 +18,24 @@ class FoodAdapter: Adapter<Food>() {
         return ViewHolder(view)
     }
 
-    class ViewHolder(itemView: View): Adapter.ViewHolder<Food>(itemView) {
+    inner class ViewHolder(itemView: View): Adapter.ViewHolder<Food>(itemView) {
 
         private val binding = DataBindingUtil.bind<ItemFoodBinding>(itemView)
 
         override fun update(item: Food) {
             binding?.food = item
             binding?.executePendingBindings()
+            binding?.btOrder?.setOnClickListener {
+                if (listener is FoodAdapter.Listener) {
+                    (listener as Listener).onOrderClicked(item)
+                }
+            }
+
         }
 
+    }
+
+    interface Listener: Adapter.Listener<Food> {
+        fun onOrderClicked(food: Food)
     }
 }

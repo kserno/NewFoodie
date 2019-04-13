@@ -11,4 +11,9 @@ import kotlinx.android.parcel.Parcelize
 data class FoodOrderModel(
         val food: Food,
         var count: Int
-): Parcelable
+): Parcelable {
+
+    val prettyCount: String
+        get() = "x $count"
+
+}

@@ -27,7 +27,7 @@ class CategoriesFragment:BaseFragment(), Adapter.Listener<FoodCategory> {
 
 
     override fun onItemSelected(item: FoodCategory) {
-        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodFragment(item.id)
+        val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodFragment(item)
         findNavController().navigate(dirs)
     }
 

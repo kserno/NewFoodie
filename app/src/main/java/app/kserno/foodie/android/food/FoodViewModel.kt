@@ -6,6 +6,7 @@ import app.kserno.foodie.common.Action
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.applySchedulers
 import app.kserno.foodie.common.model.Food
+import app.kserno.foodie.common.model.FoodCategory
 import app.kserno.foodie.common.model.FoodOrderModel
 import io.reactivex.Single
 
@@ -14,16 +15,16 @@ import io.reactivex.Single
  */
 class FoodViewModel(
         private val api: Api,
-        private val categoryId: String = ""
+        private val category: FoodCategory
 ): ViewModel() {
 
     val data = MutableLiveData<List<Food>>()
     val order = MutableLiveData<List<FoodOrderModel>>()
     val actionOrder = MutableLiveData<Action<Void>>()
-
+    val textToolbar = MutableLiveData<String>().apply { value = category.name }
 
     init {
-        api.getFoods("0UDfSY7pyQ", categoryId)
+        api.getFoods("0UDfSY7pyQ", category.id)
                 .applySchedulers()
                 .subscribe({
                     data.postValue(it)
@@ -43,6 +44,10 @@ class FoodViewModel(
 
     fun orderClicked() {
         actionOrder.postValue(Action())
+    }
+
+    fun orderSelected(food: Food) {
+        api.addFoodToOrder(food)
     }
 
 }

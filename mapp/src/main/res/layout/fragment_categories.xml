@@ -35,23 +35,12 @@
         </FrameLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/orderLayout"/>
+        android:layout_below="@+id/toolbar" />
 
-    <LinearLayout
-        android:id="@+id/orderLayout"
-        android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-
-
-    </LinearLayout>
 
 </RelativeLayout>
