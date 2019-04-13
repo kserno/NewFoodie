@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.common.api.Api
+import app.kserno.foodie.common.model.User
 import com.kserno.foodie.PersistentLayer
 import com.kserno.foodie.R
 import com.kserno.foodie.base.BaseFragment
 import com.kserno.foodie.databinding.FragmentMainBinding
 import com.squareup.moshi.Moshi
+import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
 /**
@@ -36,6 +38,12 @@ class MainFragment: BaseFragment() {
 
         viewModel = MainViewModel(api)
         binding.viewModel = viewModel
+
+        if (api.getCurrentUser()!!.role == User.Role.WAITER) {
+            btAccounts.visibility = View.GONE
+        } else {
+            btAccounts.visibility = View.VISIBLE
+        }
         bindActions()
     }
 

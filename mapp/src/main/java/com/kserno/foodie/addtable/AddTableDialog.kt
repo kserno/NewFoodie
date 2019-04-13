@@ -24,6 +24,8 @@ class AddTableDialog: DialogFragment() {
 
     @Inject lateinit var api: Api
 
+    var callback: Callback? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.dialog_add_table, container, false)
     }
@@ -40,9 +42,14 @@ class AddTableDialog: DialogFragment() {
         viewModel.actionDone.observe(this, Observer {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
+                callback?.dismissed()
                 dismiss()
             }
         })
 
+    }
+
+    interface Callback {
+        fun dismissed()
     }
 }

@@ -56,17 +56,13 @@ class TablesFragment: BaseFragment(), Adapter.Listener<Table> {
             if (!it.hasBeenHandled) {
                 it.getContentIfNotHandled()
                 val dialog = AddTableDialog()
-                dialog.show(fragmentManager!!, "0")
-                dialog.onDismiss(object: DialogInterface{
-                    override fun dismiss() {
+                dialog.callback = object : AddTableDialog.Callback {
+                    override fun dismissed() {
                         viewModel.refresh()
                     }
+                }
+                dialog.show(childFragmentManager, "0")
 
-                    override fun cancel() {
-
-                    }
-
-                })
             }
         })
     }

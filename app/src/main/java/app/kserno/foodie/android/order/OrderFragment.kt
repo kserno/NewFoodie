@@ -40,6 +40,7 @@ class OrderFragment: BaseFragment() {
 
     lateinit var binding: FragmentOrderBinding
 
+
     var observationHandler: ProximityObserver.Handler? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,6 +58,13 @@ class OrderFragment: BaseFragment() {
 
 
         viewModel.data.observe(this, Observer {
+            if (it.orders.none { it.paidBy == null }) {
+                tvSettled.visibility = View.VISIBLE
+            } else {
+                tvSettled.visibility = View.INVISIBLE
+
+            }
+
             if (it.orders.isEmpty()) {
                 layoutNothingOrdered.visibility = View.VISIBLE
                 layoutOrdered.visibility = View.GONE
@@ -72,6 +80,17 @@ class OrderFragment: BaseFragment() {
             }
 
             adapter.items = it.orders.filter { it.paidBy == null }
+        })
+
+        viewModel.currentId.observe(this, Observer {
+            if (it == null) {
+                tvBeacon.visibility = View.VISIBLE
+                frame.visibility = View.GONE
+            } else {
+                tvBeacon.visibility = View.INVISIBLE
+                frame.visibility = View.VISIBLE
+
+            }
         })
 
         bindActions()
@@ -123,13 +142,18 @@ class OrderFragment: BaseFragment() {
                 .forTag("table")
                 .inCustomRange(2.0)
                 .onEnter {
-                    print(it)
+                    val lastId = viewModel.currentId.value
+                    viewModel.currentId.value = it.attachments["id"]
+                    if (lastId != it.attachments["id"]) {
+                        viewModel.hook()
+                    }
                     /* do something here */
                 }
                 .onExit {
                     print(it)
                     /* do something here */}
-                .onContextChange {/* do something here */}
+                .onContextChange {
+                    /* do something here */}
                 .build()
 
         observationHandler = proximityObserver.startObserving(tableZone)

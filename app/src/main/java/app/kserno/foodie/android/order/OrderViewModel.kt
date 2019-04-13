@@ -20,24 +20,16 @@ class OrderViewModel(
 
     val data = MutableLiveData<Order>()
 
+    val currentId = MutableLiveData<String?>().apply { value = null }
+
     val actionOrder = MutableLiveData<Action<Void>>()
     val actionPaid = MutableLiveData<Action<Void>>()
     val actionClose = MutableLiveData<Action<Void>>()
     val actionPay = MutableLiveData<Action<Void>>()
 
-
-
-
     init {
-        wsService.getObservable()
-                .applySchedulers()
-                .subscribe({
-                    data.postValue(it)
-                }, {
-                    it.printStackTrace()
-                })
-    }
 
+    }
 
     fun orderClicked() {
         actionOrder.postValue(Action())
@@ -54,6 +46,16 @@ class OrderViewModel(
 
     fun payClicked() {
         actionPay.postValue(Action())
+    }
+
+    fun hook() {
+        wsService.getObservable()
+                .applySchedulers()
+                .subscribe({
+                    data.postValue(it)
+                }, {
+                    it.printStackTrace()
+                })
     }
 
 
