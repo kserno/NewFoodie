@@ -18,6 +18,11 @@ import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentOrderBinding
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.api.Api
+import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
+import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
+import com.estimote.proximity_sdk.api.ProximityObserver
+import com.estimote.proximity_sdk.api.ProximityObserverBuilder
+import com.estimote.proximity_sdk.api.ProximityZoneBuilder
 import kotlinx.android.synthetic.main.fragment_order.*
 import javax.inject.Inject
 
@@ -34,6 +39,8 @@ class OrderFragment: BaseFragment() {
     @Inject lateinit var wsService: WsService
 
     lateinit var binding: FragmentOrderBinding
+
+    var observationHandler: ProximityObserver.Handler? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,12 +72,11 @@ class OrderFragment: BaseFragment() {
             }
 
             adapter.items = it.orders.filter { it.paidBy == null }
-
-
         })
 
         bindActions()
         binding.viewModel = viewModel
+        setupEstimote()
     }
 
     private fun bindActions() {
@@ -95,6 +101,44 @@ class OrderFragment: BaseFragment() {
                 mainActivity?.controller?.navigate(dirs)
             }
         })
+    }
+
+    private fun setupEstimote() {
+
+
+        RequirementsWizardFactory.createEstimoteRequirementsWizard().fulfillRequirements(
+                activity!!, { buildProximityObserver() },
+        { print("log") },
+        { it.printStackTrace()})
+    }
+
+    private fun buildProximityObserver() {
+        val cloudCredentials = EstimoteCloudCredentials("food-io-fy8", "bb3bdfa5d6fa4c24ac0e1fb9350e2dc0")
+        val proximityObserver = ProximityObserverBuilder(context!!, cloudCredentials)
+                .withBalancedPowerMode()
+                .onError { it.printStackTrace()}
+                .build()
+
+        val tableZone = ProximityZoneBuilder()
+                .forTag("table")
+                .inCustomRange(2.0)
+                .onEnter {
+                    print(it)
+                    /* do something here */
+                }
+                .onExit {
+                    print(it)
+                    /* do something here */}
+                .onContextChange {/* do something here */}
+                .build()
+
+        observationHandler = proximityObserver.startObserving(tableZone)
+
+    }
+
+    override fun onDestroy() {
+        observationHandler?.stop()
+        super.onDestroy()
     }
 }
 
