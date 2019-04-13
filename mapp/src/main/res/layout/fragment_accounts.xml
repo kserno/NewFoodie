@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Too
+
 
         <Button
             android:id="@+id/btAdd"
@@ -21,7 +21,7 @@
             android:textColor="#ffffff"
             android:layout_alignParentBottom="true"
             android:text="New account"
-            android:onClick="@{() -> viewModel.newClicked}"/>
+            android:onClick="@{() -> viewModel.newClicked()}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
