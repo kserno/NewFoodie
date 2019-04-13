@@ -1,15 +1,20 @@
 package app.kserno.foodie.android.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentFoodDetailBinding
-import app.kserno.foodie.common.dialog.InfoDialog
+import app.kserno.foodie.android.dialog.InfoDialog
 import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.model.Food
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_food_detail.*
 import javax.inject.Inject
 
 /**

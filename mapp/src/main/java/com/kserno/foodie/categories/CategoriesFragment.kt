@@ -10,20 +10,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.kserno.foodie.common.Adapter
 import app.kserno.foodie.common.VerticalSpaceItemDecoration
-import app.kserno.foodie.common.api.Api
 
 import app.kserno.foodie.common.api.ParseApi
 import app.kserno.foodie.common.model.FoodCategory
 import com.kserno.foodie.R
-import com.kserno.foodie.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_categories.*
-import javax.inject.Inject
 
 /**
  *  Created by filipsollar on 2019-03-27
  */
-class CategoriesFragment: BaseFragment(), Adapter.Listener<FoodCategory> {
-    override val layoutId: Int = R.layout.fragment_categories
+class CategoriesFragment: Fragment(), Adapter.Listener<FoodCategory> {
 
     override fun onItemSelected(item: FoodCategory) {
         val dirs = CategoriesFragmentDirections.actionCategoriesFragmentToFoodsFragment(item)
@@ -33,15 +29,15 @@ class CategoriesFragment: BaseFragment(), Adapter.Listener<FoodCategory> {
     lateinit var viewModel: CategoriesViewModel
     lateinit var adapter: FoodCategoriesAdapter
 
-    @Inject lateinit var api: Api
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_categories, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainActivity?.component?.inject(this)
-
         adapter = FoodCategoriesAdapter()
         adapter.listener = this
-        viewModel = CategoriesViewModel(api)
+        viewModel = CategoriesViewModel(ParseApi(context!!))
 
         recyclerView.adapter = adapter
 

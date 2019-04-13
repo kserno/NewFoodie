@@ -3,11 +3,13 @@ package app.kserno.foodie.android.neworder
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.base.BaseFragment
 import app.kserno.foodie.android.databinding.FragmentNewOrderBinding
-import app.kserno.foodie.common.dialog.InfoDialog
+import app.kserno.foodie.android.dialog.InfoDialog
 import app.kserno.foodie.common.WsService
 import app.kserno.foodie.common.api.Api
 import kotlinx.android.synthetic.main.fragment_new_order.*

@@ -17,37 +17,35 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
-import app.kserno.foodie.common.api.Api
 import app.kserno.foodie.common.api.ParseApi
-import com.kserno.foodie.base.BaseFragment
 import com.kserno.foodie.dialog.LoadingDialog
 import kotlinx.android.synthetic.main.fragment_add_food.*
 import java.io.File
 import java.net.URI
-import javax.inject.Inject
+
+
 
 
 /**
  *  Created by filipsollar on 2019-04-03
  */
-class AddFoodFragment: BaseFragment() {
-    override val layoutId: Int = R.layout.fragment_add_food
+class AddFoodFragment: Fragment() {
 
-
-    @Inject lateinit var api: Api
 
     lateinit var viewModel: AddFoodViewModel
     lateinit var binding: FragmentAddFoodBinding
 
     var dialog: DialogFragment? = null
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_add_food, container, false)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainActivity?.component?.inject(this)
-
         binding = DataBindingUtil.bind(view)!!
-        viewModel = AddFoodViewModel(api)
+        viewModel = AddFoodViewModel(ParseApi(context!!))
         binding.viewModel = viewModel
 
         viewModel.actionPickPhoto.observe(this, Observer {
