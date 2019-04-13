@@ -1,5 +1,6 @@
 package app.kserno.foodie.common
 
+import android.content.Context
 import android.util.Log
 import app.kserno.foodie.common.model.FoodOrder
 import app.kserno.foodie.common.model.Order
@@ -24,7 +25,8 @@ import com.squareup.moshi.Types.newParameterizedType
 /**
  *  Created by filipsollar on 2019-04-12
  */
-class WsService(private val moshi: Moshi) {
+class WsService(private val moshi: Moshi,
+private val context:Context) {
 
     private var socket : Socket? = null
 
@@ -66,6 +68,7 @@ class WsService(private val moshi: Moshi) {
     }
 
     fun order(order: List<FoodOrder>?) {
+        order?.forEach { it.orderedBy = Utils.getUniqueId(context)}
         val data = moshi.adapter<List<FoodOrder>>(Types.newParameterizedType(List::class.java, FoodOrder::class.java)).toJson(order)
         socket!!.emit(WsRequest.Action.ORDER.name, data)
     }

@@ -48,6 +48,9 @@ class PayingFragment: BaseFragment() {
                 findNavController().navigate(R.id.action_payingFragment_to_paymentFragment, bundle)
             }
         })
+        btSelectMine.setOnClickListener {
+            adapter.selectMine(context!!)
+        }
 
         binding.viewModel = viewModel
 

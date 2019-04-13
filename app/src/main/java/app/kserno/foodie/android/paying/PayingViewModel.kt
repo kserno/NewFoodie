@@ -31,4 +31,6 @@ class PayingViewModel(
     fun goToGatewayClicked() {
         actionGateway.postValue(Action())
     }
+
+
 }

@@ -12,10 +12,16 @@ import kotlinx.android.parcel.Parcelize
 data class FoodOrder(
         val id: String,
         val food: FoodWs,
-        var paidBy: String? = null
+        var paidBy: String? = null,
+        var orderedBy: String? = null,
+        var delivered: Boolean = false
 ): Parcelable {
 
+    val prettyPaidBy: String
+        get() = "Paid by $paidBy"
 
+    val paid: String?
+        get() = if (paidBy == null) null else "Paid"
 
 
 }

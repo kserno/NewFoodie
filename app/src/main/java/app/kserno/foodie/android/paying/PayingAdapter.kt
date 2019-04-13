@@ -1,5 +1,6 @@
 package app.kserno.foodie.android.paying
 
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.kserno.foodie.android.R
 import app.kserno.foodie.android.databinding.ItemPayingOrderBinding
 import app.kserno.foodie.common.Adapter
+import app.kserno.foodie.common.Utils
 import app.kserno.foodie.common.model.FoodOrder
 
 /**
@@ -66,6 +68,15 @@ class PayingAdapter: RecyclerView.Adapter<PayingAdapter.ViewHolder>() {
             }
         }
         return result
+    }
+
+    fun selectMine(context: Context) {
+        items.forEachIndexed { index, foodOrder ->
+            if (foodOrder.orderedBy == Utils.getUniqueId(context)) {
+                selection[index] = true
+                notifyItemChanged(index)
+            }
+        }
     }
 
 }

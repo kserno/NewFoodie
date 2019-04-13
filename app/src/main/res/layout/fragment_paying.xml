@@ -49,18 +49,48 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            android:layout_above="@id/btToGateway"/>
+            android:layout_above="@id/bottomLayout"/>
 
 
-        <Button
-            android:id="@+id/btToGateway"
+        <LinearLayout
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/colorPrimary"
-            android:textColor="#ffffff"
             android:layout_alignParentBottom="true"
-            android:text="Go to payment gateway"
-            android:onClick="@{() -> viewModel.goToGatewayClicked()}"/>
+            android:background="@color/colorPrimary"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btSelectMine"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="60dp"
+                android:background="@color/colorPrimary"
+                android:textColor="#ffffff"
+                android:text="Select mine" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:background="#ffffff"/>
+
+            <Button
+                android:id="@+id/btToGateway"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="60dp"
+                android:background="@color/colorPrimary"
+                android:textColor="#ffffff"
+                android:text="Go to gateway"
+                android:onClick="@{() -> viewModel.goToGatewayClicked()}"/>
+
+
+        </LinearLayout>
+
+
 
 
     </RelativeLayout>
